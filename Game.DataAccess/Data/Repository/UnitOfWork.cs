@@ -1,10 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Game.DataAccess.Data.Repository;
+using GameStore.DataAccess.Data.Repository.IRepository;
 
-namespace Game.DataAccess.Data.Repository
+namespace GameStore.DataAccess.Data.Repository
 {
-    class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
+        private readonly ApplicationDbContext _db;
+        public UnitOfWork(ApplicationDbContext db)
+        {
+            _db = db;
+            Genre = new GenreRepository(_db);
+
+        }
+
+        public IGenreRepository Genre { get; private set; }
+
+        public void Dispose()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
     }
 }

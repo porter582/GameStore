@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GameStore.DataAccess.Data.Repository.IRepository;
+using System;
 
-namespace Game.DataAccess.Data.Repository.IRepository
+namespace GameStore.DataAccess
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        IGenreRepository Genre { get; }
+
+
+        void Save();
     }
 }
