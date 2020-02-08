@@ -33,7 +33,7 @@ namespace Game.DataAccess.Data.Repository
             var objFromDb = _db.Genre.FirstOrDefault(s => s.Id == genre.Id);
 
             objFromDb.Name = genre.Name;
-            objFromDb.ReleaseDate = genre.ReleaseDate;
+            //objFromDb.ReleaseDate = genre.ReleaseDate;
 
             _db.SaveChanges();
         }
