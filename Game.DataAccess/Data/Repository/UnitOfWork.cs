@@ -11,11 +11,13 @@ namespace GameStore.DataAccess.Data.Repository
             _db = db;
             Genre = new GenreRepository(_db);
             Rating = new RatingRepository(_db);
+            GameObj = new GameRepository(_db);
 
         }
 
         public IGenreRepository Genre { get; private set; }
         public IRatingRepository Rating { get; private set; }
+        public IGameRepository GameObj { get; private set; }
 
         public void Dispose()
         {

@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace GameStore.DataAccess.Data.Repository.IRepository
 {
-    public interface IRatingRepository : IRepository<Rating>
+    public interface IGameRepository : IRepository<GameModel>
     {
-        IEnumerable<SelectListItem> GetRatingListForDropDown();
+        //IEnumerable<SelectListItem> GetGameListForDropDown();
 
-        void Update(Rating rating);
+        void Update(GameModel game);
     }
 }

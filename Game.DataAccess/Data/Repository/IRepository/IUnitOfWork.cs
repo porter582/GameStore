@@ -7,6 +7,7 @@ namespace GameStore.DataAccess
     {
         IGenreRepository Genre { get; }
         IRatingRepository Rating { get; }
+        IGameRepository GameObj { get; }
 
 
         void Save();

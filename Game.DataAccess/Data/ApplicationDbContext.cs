@@ -15,6 +15,7 @@ namespace GameStore.DataAccess
         }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Rating> Rating { get; set; }
+        public DbSet<GameModel> GameModel { get; set; }
 
     }
 }

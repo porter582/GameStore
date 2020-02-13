@@ -28,12 +28,12 @@ namespace Game.DataAccess.Data.Repository
             });
         }
 
-        public void Update(Rating genre)
+        public void Update(Rating rating)
         {
-            var objFromDb = _db.Rating.FirstOrDefault(s => s.Id == genre.Id);
+            var objFromDb = _db.Rating.FirstOrDefault(s => s.Id == rating.Id);
 
-            objFromDb.Name = genre.Name;
-            objFromDb.Description = genre.Description;
+            objFromDb.Name = rating.Name;
+            objFromDb.Description = rating.Description;
             //objFromDb.ReleaseDate = genre.ReleaseDate;
 
             _db.SaveChanges();

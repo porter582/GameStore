@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Game.Models\Game.Models.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\gameImages\" />
+  </ItemGroup>
+
 </Project>
