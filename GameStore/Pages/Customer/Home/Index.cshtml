@@ -4,5 +4,39 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@foreach (var genre in Model.GenreList)
+{
+    @if (Model.GameList.Where(c => c.GenreId == genre.Id).Count() > 0)
+    {
+        <div class="row container pb-3 backgroundWhite">
+            @*Background for each genre block*@
+            <div class="col-12">
+                <div class="row">
+                    <h2 style="color:black;" pl-1><b>@genre.Name</b></h2>@*each genre name*@
+                    <div class="col-12">
+                        <div class="row my-3">
+                            @foreach (var gameObj in Model.GameList.Where(c => c.GenreId == genre.Id))
+                            {
+                                <div class="col-lg-3 col-xl-3 col-md-6 pb-4">
+                                    <div class="card" style="background-color:red; border: 2px solid black; border-radius:5px">
+                                        @*Displays the card for each *@
+                                        <div class="pl-3 pt-1 text-center"><h3 class="card-title"style="color:black;"><b>@gameObj.Name</b></h3></div>
+                                        <div class="d-flex justify-content-between form-control" style="border:0px;">
+                                            <div class="col-12 badge badge-dark text-center" style="font-size:14px;">
+                                                Genre: @gameObj.Genre.Name,
+                                                Rating: @gameObj.Rating.Name
+                                            </div>
+                                        </div>
+                                        <img src="@gameObj.Image" class="card-img-top p-2 rounded" />
+                                        <a asp-page="Details" class="btn btn-dark" style="border-radius:2px;" asp-route-id="@gameObj.Id">Details</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    }
+}
