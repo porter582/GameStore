@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Game.DataAccess.Migrations
 {
-    public partial class Genre : Migration
+    public partial class GenreAndRating : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,6 +57,20 @@ namespace Game.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genre", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rating",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rating", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,6 +238,9 @@ namespace Game.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Genre");
+
+            migrationBuilder.DropTable(
+                name: "Rating");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
