@@ -10,9 +10,9 @@ namespace Game.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Display(Name="Game Title")]
+        [Display(Name="Genre Title")]
         public string Name { get; set; }
-        [Display(Name = "Release Date")]
-        public string ReleaseDate { get; set; }
+        //[Display(Name = "Release Date")]
+        //public string ReleaseDate { get; set; }
     }
 }

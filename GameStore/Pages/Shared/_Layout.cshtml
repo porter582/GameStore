@@ -6,6 +6,10 @@
     <title>@ViewData["Title"] - GameStore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui-1.12.1/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
 </head>
 <body>
     <header>
@@ -20,7 +24,7 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Genre/Index">Genre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
@@ -45,6 +49,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="~/js/toastr.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/7nj7hdm2f6mqh6y6hoaxswo0bsn00jgnx0wktvfx1u3wv6l2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
