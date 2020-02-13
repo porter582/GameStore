@@ -6,7 +6,6 @@ namespace GameStore.DataAccess
     public interface IUnitOfWork : IDisposable
     {
         IGenreRepository Genre { get; }
-        IRatingRepository Rating { get; }
 
 
         void Save();
