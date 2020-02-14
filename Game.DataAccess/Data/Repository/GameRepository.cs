@@ -19,15 +19,6 @@ namespace Game.DataAccess.Data.Repository
             _db = db;
         }
 
-        //public IEnumerable<SelectListItem> GetGameListForDropDown()
-        //{
-        //    return _db.GameModel.Select(i => new SelectListItem()
-        //    {
-        //        Text = i.Name,
-        //        Value = i.Id.ToString()
-        //    });
-        //}
-
         public void Update(GameModel game)
         {
             var objFromDb = _db.GameModel.FirstOrDefault(s => s.Id == game.Id);
