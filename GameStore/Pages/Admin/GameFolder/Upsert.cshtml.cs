@@ -60,7 +60,7 @@ namespace GameStore.Pages.Admin.GameFolder
                 return Page();
             }
 
-            if (GameObj.Game.Id == 0) //new menu item
+            if (GameObj.Game.Id == 0) //new game item
             {
                 //rename file user submits for image
                 string fileName = Guid.NewGuid().ToString();

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Game.DataAccess.Migrations
 {
-    public partial class GenreAndRating : Migration
+    public partial class GameStore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +39,10 @@ namespace Game.DataAccess.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -179,6 +182,36 @@ namespace Game.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "GameModel",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(nullable: false),
+                    GenreId = table.Column<int>(nullable: false),
+                    RatingId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameModel", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GameModel_Genre_GenreId",
+                        column: x => x.GenreId,
+                        principalTable: "Genre",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GameModel_Rating_RatingId",
+                        column: x => x.RatingId,
+                        principalTable: "Rating",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -217,6 +250,16 @@ namespace Game.DataAccess.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GameModel_GenreId",
+                table: "GameModel",
+                column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GameModel_RatingId",
+                table: "GameModel",
+                column: "RatingId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -237,16 +280,19 @@ namespace Game.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Genre");
-
-            migrationBuilder.DropTable(
-                name: "Rating");
+                name: "GameModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Genre");
+
+            migrationBuilder.DropTable(
+                name: "Rating");
         }
     }
 }

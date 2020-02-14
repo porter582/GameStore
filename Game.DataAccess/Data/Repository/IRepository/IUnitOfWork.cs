@@ -1,4 +1,5 @@
-﻿using GameStore.DataAccess.Data.Repository.IRepository;
+﻿using Game.DataAccess.Data.Repository.IRepository;
+using GameStore.DataAccess.Data.Repository.IRepository;
 using System;
 
 namespace GameStore.DataAccess
@@ -8,6 +9,7 @@ namespace GameStore.DataAccess
         IGenreRepository Genre { get; }
         IRatingRepository Rating { get; }
         IGameRepository GameObj { get; }
+        IApplicationUserRepository ApplicationUser { get; }
 
 
         void Save();

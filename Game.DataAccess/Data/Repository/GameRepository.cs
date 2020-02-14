@@ -27,6 +27,7 @@ namespace Game.DataAccess.Data.Repository
             objFromDb.Description = game.Description;
             objFromDb.RatingId = game.RatingId;
             objFromDb.GenreId = game.GenreId;
+            objFromDb.Price = game.Price;
             if (game.Image != null)
             {
                 objFromDb.Image = objFromDb.Image;
