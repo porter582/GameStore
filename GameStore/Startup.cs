@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GameStore.DataAccess;
 using GameStore.DataAccess.Data.Repository;
+using Stripe;
+using Game.Utility;
 
 namespace GameStore
 {
@@ -25,6 +28,13 @@ namespace GameStore
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));//Stripe goes to appsettings
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -53,6 +63,7 @@ namespace GameStore
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
@@ -60,6 +71,8 @@ namespace GameStore
             app.UseAuthorization();
 
             app.UseMvc();
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+
         }
     }
 }
