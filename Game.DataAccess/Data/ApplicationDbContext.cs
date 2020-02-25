@@ -17,6 +17,9 @@ namespace GameStore.DataAccess
         public DbSet<Rating> Rating { get; set; }
         public DbSet<GameModel> GameModel { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+        public DbSet<OrderHeader> OrderHeader { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
 
     }
 }

@@ -10,6 +10,9 @@ namespace GameStore.DataAccess
         IRatingRepository Rating { get; }
         IGameRepository GameObj { get; }
         IApplicationUserRepository ApplicationUser { get; }
+        IShoppingCartRepository ShoppingCart { get; }
+        IOrderDetailsRepository OrderDetails { get; }
+        IOrderHeaderRepository OrderHeader { get; }
 
 
         void Save();
