@@ -31,5 +31,8 @@ namespace GameStore.DataAccess.Data.Repository.IRepository
         //Remove(obj)
         void Remove(T entity);
 
+        void RemoveRange(IEnumerable<T> entity);
+
+
     }
 }
