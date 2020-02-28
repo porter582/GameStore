@@ -37,7 +37,12 @@
                                     </div>
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Name</label>
+                                            <label>Name: @Model.OrderDetailsCartVM.OrderHeader.ApplicationUser.FullName</label>
+                                        </div>
+                                    </div>
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>State</label>
                                         </div>
                                         <div class="col-9">
                                             <input id="txtName" asp-for="@Model.OrderDetailsCartVM.OrderHeader.State" type="text" class="form-control" />
@@ -53,26 +58,26 @@
                                     </div>
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Delivery Date</label>
+                                            <label>Delivery Address</label>
                                         </div>
                                         <div class="col-9">
-                                            <input id="datepicker" value="" asp-for="@Model.OrderDetailsCartVM.OrderHeader.Address" type="text" class="form-control" />
+                                            <input value="" asp-for="@Model.OrderDetailsCartVM.OrderHeader.Address" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Delivery Time</label>
+                                            <label>City</label>
                                         </div>
                                         <div class="col-9">
-                                            <input id="timepicker" value="" asp-for="@Model.OrderDetailsCartVM.OrderHeader.ZipCode" type="text" class="form-control" />
+                                            <input value="" asp-for="@Model.OrderDetailsCartVM.OrderHeader.City" type="text" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Additional Instructions: </label>
+                                            <label>Zip</label>
                                         </div>
                                         <div class="col-9">
-                                            <textarea asp-for="@Model.OrderDetailsCartVM.OrderHeader.City" style="height:100px;" class="form-control"></textarea>
+                                            <input id="datepicker" value="" asp-for="@Model.OrderDetailsCartVM.OrderHeader.ZipCode" type="text" class="form-control" />
                                         </div>
                                     </div>
                                 </div>

@@ -60,6 +60,7 @@ namespace GameStore.Pages.Customer.Cart
 
                 ApplicationUser applicationUser = _unitOfWork.ApplicationUser.GetFirstOrDefault(c => c.Id == claim.Value);
                 OrderDetailsCartVM.OrderHeader.PhoneNumber = applicationUser.PhoneNumber;
+                OrderDetailsCartVM.OrderHeader.ApplicationUser = applicationUser;
             }
         }
 
